@@ -29,7 +29,6 @@ def job_by_id(id):
     with engine.connect() as con:
       job = con.execute(text("SELECT * from jobs where id = :val"), {"val": id})
       rows = job.fetchall()
-      print (rows)
       if len(rows) == 0:
         return None
       else:
@@ -37,7 +36,24 @@ def job_by_id(id):
         result_dict = row._asdict()
         return result_dict
 
-      
+
+def store_Data_in_DB(id, application):
+    with engine.connect() as con:
+        query = text("INSERT INTO Application (job_id, first_name, email, linkedin_url, resume_url) VALUES (:job_id, :first_name, :email, :linkedin_url, :resume_url)")
+        con.execute(query, job_id=id, first_name=application['first_name'], email=application['email'], linkedin_url=application['linkedin_url'], resume_url=application['resume_url'])
+    return True
+
+
+# def store_Data_in_DB(id, data):
+#     with engine.connect() as con:
+#       query = text("INSERT INTO Careers.Application (id,job_id, first_name, email, linkedin_url, resume_url) VALUES (:job_id, :first_name, :email, :linkedin_url, :resume_url)")
+#       VALUES = {'job_id': id,
+#             'first_name':data['first_name'],
+#             'email':data['email'],
+#             'linkedin_url':data['linkedin_url'],
+#             'resume_url':data['resume_url']}
+#       con.execute(query,VALUES)
+
 
 
   

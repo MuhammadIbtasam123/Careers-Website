@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 # here database create act as a module from where we call functions. like header file in c++.
-from database import get_jobs_from_db, job_by_id
+from database import get_jobs_from_db, job_by_id, store_Data_in_DB
 from sqlalchemy import text
 
 app = Flask(__name__)
@@ -28,9 +28,12 @@ def show_Jobs(id):
 def apply_Jobs(id):
     # data = request.args #when use routing method
     data = request.form # when use post method in form
+    job = job_by_id(id)
     #store this in db
+    store_Data_in_DB(id,data)
+
     #show acknowledgement
-    return jsonify(data)
+    return render_template("application_submitted.html",application=application,job=job)
 
 if __name__ == "__main__":
   app.run( host='0.0.0.0',debug=True)
