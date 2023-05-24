@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include 'bootstrap.html' %}
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    {% include 'nav.html' %}
+    <div class="container">
+      <h1 id="Home" class="heading mb-4">CAREERS</h1>
+      <img
+        class="image"
+        src="../static/images/banner.jpg"
+        height="320"
+        alt=""
+      />
+
+      <h2 id="About" class="heading mt-4 mb-5">About Careers</h2>
+      <div class="row">
+        <p class="col-6">
+          Welcome to Career, your one-stop destination for internship
+          opportunities! Our website is designed exclusively for university
+          students who are eager to kickstart their careers and gain valuable
+          real-world experience through internships. We understand the
+          importance of internships in building a strong foundation for future
+          success, and we are committed to connecting talented students with
+          exceptional internship opportunities.
+        </p>
+        <img class="col-6 mb-5" src="../static/images/work.jpg" alt="" />
+      </div>
+
+      <h2 id="Jobs" class="heading mb-5">Open Positions</h2>
+      {% include 'jobs.html' %}
+      <div id="Contact-Us" class="btn-center">
+        <a
+          type="button"
+          class="btn btn-primary"
+          href="mailto:its.ibtasamqureshi123@gmail.com"
+          >Contact Us</a
+        >
+      </div>
+    </div>
+
+    <div class="container d-flex justify-content-center align-items-center">
+      <p class="fs-6 mt-3"></p>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+</html>

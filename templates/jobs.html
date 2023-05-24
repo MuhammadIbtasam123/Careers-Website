@@ -1,0 +1,19 @@
+{% for job in jobs %}
+<div class="row">
+  <div class="border-bottom col-9">
+    <h4 class="sub-heading"><strong>{{job.title}}</strong></h4>
+    <div class="sub-sub-heading">
+      <strong>Location: </strong>{{job.location}}
+    </div>
+    {% if 'salary' in job %}
+    <div><strong>Salary: </strong>{{job.salary}}</div>
+    {% endif %}
+  </div>
+  <div class="col-3">
+    <a type="button" class="btn btn-outline-primary" href="/jobs/{{job.id}}"
+      >APPLY</a
+    >
+  </div>
+</div>
+<br />
+{% endfor %}
